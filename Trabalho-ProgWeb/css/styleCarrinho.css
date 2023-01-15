@@ -1,0 +1,22 @@
+#continuar{
+    float: right;
+    margin-top: 46px;
+    
+} 
+
+#finalizar{
+    float: right;   
+    margin-top: 94px;
+    margin-left: 10px;
+}
+
+#adicionar{
+    margin-top: -2px;
+}
+
+.vazio{
+    position: absolute;
+    top: 52%;
+    left: 47%;
+}
+

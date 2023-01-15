@@ -1,0 +1,284 @@
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+CREATE DATABASE IF NOT EXISTS `mercadinho` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+USE `mercadinho`;
+
+CREATE TABLE IF NOT EXISTS `categoria` (
+  `idCategoria` int(11) NOT NULL AUTO_INCREMENT,
+  `nomeCategoria` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idCategoria`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
+INSERT INTO `categoria` (`idCategoria`, `nomeCategoria`) VALUES
+	(1, 'Hortifruti'),
+	(2, 'Higiene Pessoal'),
+	(5, 'Limpeza'),
+	(6, 'Eletronicos'),
+	(7, 'Bebidas'),
+	(14, 'Frutas'),
+	(17, 'Eletrodomesticos'),
+	(18, 'Ração');
+/*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
+
+CREATE TABLE IF NOT EXISTS `cliente` (
+  `idClientes` int(11) NOT NULL AUTO_INCREMENT,
+  `nomeCliente` varchar(45) NOT NULL,
+  `cpfCliente` varchar(45) NOT NULL,
+  PRIMARY KEY (`idClientes`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT INTO `cliente` (`idClientes`, `nomeCliente`, `cpfCliente`) VALUES
+	(1, 'Celso Werner', '03656359954'),
+	(2, 'Joao Silva', '27387354006'),
+	(3, 'Ana Silveira', '17387354006'),
+	(19, 'Nilson', '123456789000');
+/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
+
+CREATE TABLE IF NOT EXISTS `funcionario` (
+  `idFuncionario` int(11) NOT NULL AUTO_INCREMENT,
+  `nomeFuncionario` varchar(45) NOT NULL,
+  `senhaFuncionario` varchar(45) NOT NULL,
+  `tipoFuncionario` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idFuncionario`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
+INSERT INTO `funcionario` (`idFuncionario`, `nomeFuncionario`, `senhaFuncionario`, `tipoFuncionario`) VALUES
+	(1, 'Joao Pedrao', '12345', '2'),
+	(2, 'admin', 'admin', '1'),
+	(10, 'pedrinho', '123654', '1'),
+	(12, 'Rafael', '12345', '2'),
+	(13, 'Cleber', '12345', '1');
+/*!40000 ALTER TABLE `funcionario` ENABLE KEYS */;
+
+CREATE TABLE IF NOT EXISTS `itens_pedido` (
+  `id_Itens` int(11) NOT NULL AUTO_INCREMENT,
+  `idVenda` int(11) DEFAULT NULL,
+  `idProduto` int(11) NOT NULL,
+  `quantidade_Itens` int(11) NOT NULL,
+  `valor_Item` float NOT NULL,
+  PRIMARY KEY (`id_Itens`),
+  KEY `idProduto_idx` (`idProduto`),
+  KEY `idVenda_idx` (`idVenda`)
+) ENGINE=InnoDB AUTO_INCREMENT=174 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*!40000 ALTER TABLE `itens_pedido` DISABLE KEYS */;
+INSERT INTO `itens_pedido` (`id_Itens`, `idVenda`, `idProduto`, `quantidade_Itens`, `valor_Item`) VALUES
+	(108, 108, 2, 1, 2500),
+	(109, 109, 2, 1, 2500),
+	(110, 109, 20, 1, 8),
+	(111, 109, 2, 1, 2500),
+	(112, 109, 20, 1, 8),
+	(113, 109, 2, 1, 2500),
+	(114, 109, 20, 1, 8),
+	(115, 109, 2, 1, 2500),
+	(116, 109, 20, 1, 8),
+	(117, 109, 2, 1, 2500),
+	(118, 109, 20, 1, 8),
+	(119, 109, 2, 1, 2500),
+	(120, 109, 20, 1, 8),
+	(121, 109, 2, 1, 2500),
+	(122, 109, 20, 1, 8),
+	(123, 109, 2, 1, 2500),
+	(124, 109, 20, 1, 8),
+	(125, 109, 2, 1, 2500),
+	(126, 109, 20, 1, 8),
+	(127, 109, 2, 1, 2500),
+	(128, 109, 20, 1, 8),
+	(129, 109, 2, 1, 2500),
+	(130, 109, 20, 1, 8),
+	(131, 109, 2, 1, 2500),
+	(132, 109, 20, 1, 8),
+	(133, 109, 2, 1, 2500),
+	(134, 109, 20, 1, 8),
+	(135, 109, 2, 1, 2500),
+	(136, 109, 20, 1, 8),
+	(137, 109, 2, 1, 2500),
+	(138, 109, 20, 1, 8),
+	(139, 109, 2, 1, 2500),
+	(140, 109, 20, 1, 8),
+	(141, 109, 2, 1, 2500),
+	(142, 109, 20, 1, 8),
+	(143, 109, 2, 1, 2500),
+	(144, 109, 20, 1, 8),
+	(145, 109, 2, 1, 2500),
+	(146, 109, 20, 1, 8),
+	(147, 109, 2, 1, 2500),
+	(148, 109, 20, 1, 8),
+	(149, 109, 2, 1, 2500),
+	(150, 109, 20, 1, 8),
+	(151, 109, 2, 1, 2500),
+	(152, 109, 20, 1, 8),
+	(153, 109, 2, 1, 2500),
+	(154, 109, 20, 1, 8),
+	(155, 109, 2, 1, 2500),
+	(156, 109, 20, 1, 8),
+	(157, 110, 22, 1, 6),
+	(158, 110, 20, 1, 8),
+	(159, 111, 24, 2, 3),
+	(160, 111, 21, 1, 35),
+	(161, 112, 24, 2, 6),
+	(162, 112, 22, 1, 6),
+	(163, 113, 2, 2, 5000),
+	(164, 114, 19, 2, 30),
+	(165, 114, 23, 1, 800),
+	(166, 115, 24, 1, 3),
+	(167, 115, 23, 1, 800),
+	(168, 115, 22, 1, 6),
+	(169, 116, 26, 1, 6),
+	(170, 116, 25, 1, 5),
+	(171, 117, 22, 1, 6),
+	(172, 117, 22, 1, 6),
+	(173, 117, 22, 1, 6);
+/*!40000 ALTER TABLE `itens_pedido` ENABLE KEYS */;
+
+CREATE TABLE IF NOT EXISTS `marca` (
+  `idMarca` int(11) NOT NULL AUTO_INCREMENT,
+  `nomeMarca` varchar(45) NOT NULL,
+  PRIMARY KEY (`idMarca`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*!40000 ALTER TABLE `marca` DISABLE KEYS */;
+INSERT INTO `marca` (`idMarca`, `nomeMarca`) VALUES
+	(1, 'Coca Cola'),
+	(2, 'Omo '),
+	(3, 'Lenovo'),
+	(6, 'Alambique'),
+	(11, 'Serra'),
+	(12, 'Sansumg'),
+	(13, 'Electrolux'),
+	(14, 'Oster'),
+	(15, 'Silvestre'),
+	(16, 'Uncle Bens'),
+	(17, 'Tirol'),
+	(18, 'Dalpet'),
+	(19, 'Campo');
+/*!40000 ALTER TABLE `marca` ENABLE KEYS */;
+
+CREATE TABLE IF NOT EXISTS `produto` (
+  `idProduto` int(11) NOT NULL AUTO_INCREMENT,
+  `nomeProduto` varchar(45) NOT NULL,
+  `valorProduto` float NOT NULL,
+  `idMarca` int(11) DEFAULT NULL,
+  `idCategoria` int(11) DEFAULT NULL,
+  `quantidadeProduto` int(11) NOT NULL,
+  PRIMARY KEY (`idProduto`),
+  UNIQUE KEY `idProdutos_UNIQUE` (`idProduto`),
+  KEY `idMarca_idx` (`idMarca`),
+  KEY `idCategoria_idx` (`idCategoria`),
+  CONSTRAINT `idCategoria` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `idMarca` FOREIGN KEY (`idMarca`) REFERENCES `marca` (`idMarca`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*!40000 ALTER TABLE `produto` DISABLE KEYS */;
+INSERT INTO `produto` (`idProduto`, `nomeProduto`, `valorProduto`, `idMarca`, `idCategoria`, `quantidadeProduto`) VALUES
+	(2, 'Televisor 50 pol.', 2500, 3, 2, 14),
+	(19, 'Pilha', 15, 3, 6, 49),
+	(20, 'Coca Cola 2L', 8, 1, 7, 119),
+	(21, 'Sabão em pó', 35, 2, 5, 99),
+	(22, 'Refrigerante Laranjinha', 6, 11, 7, 0),
+	(23, 'Cafeteira Eletrica', 800, 14, 17, 29),
+	(24, 'Abacate', 3, 17, 1, 49),
+	(25, 'Cebola', 5, 19, 1, 99),
+	(26, 'Maça', 6, 19, 14, 19);
+/*!40000 ALTER TABLE `produto` ENABLE KEYS */;
+
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` FUNCTION `validar_CPF`(CPF CHAR(11)) RETURNS int(11)
+BEGIN
+    DECLARE SOMA INT;
+    DECLARE INDICE INT;
+    DECLARE DIGITO_1 INT;
+    DECLARE DIGITO_2 INT;
+    DECLARE NR_DOCUMENTO_AUX VARCHAR(11);
+   
+ DECLARE DIGITO_1_CPF CHAR(2);
+    DECLARE DIGITO_2_CPF CHAR(2);
+    /*
+    Remove os CPFs onde todos os números são iguais
+    */
+    SET NR_DOCUMENTO_AUX = LTRIM(RTRIM(CPF));
+    IF (NR_DOCUMENTO_AUX IN ('00000000000', '11111111111', '22222222222', '33333333333', '44444444444', '55555555555', '66666666666', '77777777777', '88888888888', '99999999999', '12345678909')) THEN
+        RETURN 0;
+    END IF;
+   /*
+   O CPF deve ter 11 caracteres 
+   */
+    IF (LENGTH(NR_DOCUMENTO_AUX) <> 11) THEN
+        RETURN 0;
+    ELSE 
+ /* 
+   Armazendo os digitos verificadores do CPF informado 
+   */
+   SET DIGITO_1_CPF = SUBSTRING(NR_DOCUMENTO_AUX,LENGTH(NR_DOCUMENTO_AUX)-1,1);
+   SET DIGITO_2_CPF = SUBSTRING(NR_DOCUMENTO_AUX,LENGTH(NR_DOCUMENTO_AUX),1);
+ /*Cálculo do primeiro dígito verificador*/
+        SET SOMA = 0;
+        SET INDICE = 1;
+        WHILE (INDICE <= 9) DO          
+            SET Soma = Soma + CAST(SUBSTRING(NR_DOCUMENTO_AUX,INDICE,1) AS UNSIGNED) * (11 - INDICE);             
+            SET INDICE = INDICE + 1;      
+         END WHILE;      
+         SET DIGITO_1 = 11 - (SOMA % 11);      
+         IF (DIGITO_1 > 9) THEN
+            SET DIGITO_1 = 0;
+         END IF;
+        /* Cálculo do segundo dígito verificador */
+        SET SOMA = 0;
+        SET INDICE = 1;
+        WHILE (INDICE <= 10) DO
+             SET Soma = Soma + CAST(SUBSTRING(NR_DOCUMENTO_AUX,INDICE,1) AS UNSIGNED) * (12 - INDICE);              
+             SET INDICE = INDICE + 1;
+        END WHILE;
+        SET DIGITO_2 = 11 - (SOMA % 11);
+        IF DIGITO_2 > 9 THEN
+            SET DIGITO_2 = 0;
+        END IF;
+        /* Validando os digitos verificadores calculados com os digitos verificadores do CPF informado */
+        IF (DIGITO_1 = DIGITO_1_CPF) AND (DIGITO_2 = DIGITO_2_CPF) THEN
+            RETURN 1;
+        ELSE
+            RETURN 0;
+        END IF;
+ END IF;
+END//
+DELIMITER ;
+
+CREATE TABLE IF NOT EXISTS `venda` (
+  `idVenda` int(11) NOT NULL AUTO_INCREMENT,
+  `idFuncionario` int(11) NOT NULL,
+  `idCliente` int(11) NOT NULL,
+  `dataVenda` date NOT NULL,
+  `totalVenda` float DEFAULT NULL,
+  PRIMARY KEY (`idVenda`),
+  KEY `idFuncionario_idx` (`idFuncionario`),
+  KEY `idCliente_idx` (`idCliente`),
+  CONSTRAINT `idCliente` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idClientes`),
+  CONSTRAINT `idFuncionario` FOREIGN KEY (`idFuncionario`) REFERENCES `funcionario` (`idFuncionario`)
+) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*!40000 ALTER TABLE `venda` DISABLE KEYS */;
+INSERT INTO `venda` (`idVenda`, `idFuncionario`, `idCliente`, `dataVenda`, `totalVenda`) VALUES
+	(108, 1, 1, '2022-12-07', NULL),
+	(109, 10, 19, '2022-09-22', 60192),
+	(110, 12, 3, '2022-02-20', 14),
+	(111, 2, 2, '2022-12-07', 38),
+	(112, 12, 19, '2022-12-05', 12),
+	(113, 1, 1, '2022-12-07', 5000),
+	(114, 10, 3, '2022-12-07', 830),
+	(115, 13, 3, '2022-12-07', 809),
+	(116, 1, 1, '2022-12-07', 11),
+	(117, 1, 1, '2022-12-07', 18);
+/*!40000 ALTER TABLE `venda` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
